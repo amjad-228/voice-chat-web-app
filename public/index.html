@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق الدردشة الصوتية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- شاشة الدخول -->
+        <div id="login-screen" class="screen active">
+            <div class="login-form">
+                <h1><i class="fas fa-microphone"></i> تطبيق الدردشة الصوتية</h1>
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="اسم المستخدم" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="room-id" placeholder="معرف الغرفة (اختياري)">
+                </div>
+                <button id="join-btn" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> دخول
+                </button>
+                <div class="info">
+                    <p>إذا تركت معرف الغرفة فارغاً، سيتم إنشاء غرفة جديدة تلقائياً</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة الدردشة -->
+        <div id="chat-screen" class="screen">
+            <div class="chat-header">
+                <div class="room-info">
+                    <h2 id="room-title">الغرفة: <span id="current-room"></span></h2>
+                    <p id="user-count">المستخدمين: 0</p>
+                </div>
+                <button id="leave-room" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt"></i> مغادرة
+                </button>
+            </div>
+
+            <div class="chat-content">
+                <!-- قائمة المستخدمين -->
+                <div class="users-panel">
+                    <h3><i class="fas fa-users"></i> المستخدمين المتصلين</h3>
+                    <div id="users-list"></div>
+                </div>
+
+                <!-- منطقة الدردشة -->
+                <div class="chat-panel">
+                    <!-- الرسائل -->
+                    <div class="messages-container">
+                        <div id="messages"></div>
+                    </div>
+
+                    <!-- أدوات التحكم الصوتي -->
+                    <div class="voice-controls">
+                        <button id="mic-btn" class="btn btn-voice" title="تشغيل/إيقاف الميكروفون">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button id="speaker-btn" class="btn btn-voice" title="تشغيل/إيقاف السماعات">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                        <div class="volume-indicator">
+                            <div id="volume-bar"></div>
+                        </div>
+                    </div>
+
+                    <!-- إرسال الرسائل النصية -->
+                    <div class="message-input">
+                        <input type="text" id="message-text" placeholder="اكتب رسالة...">
+                        <button id="send-message" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- مؤشر الحالة -->
+    <div id="status-indicator" class="status-indicator">
+        <div class="status-dot"></div>
+        <span id="status-text">غير متصل</span>
+    </div>
+
+    <!-- إشعارات -->
+    <div id="notifications" class="notifications"></div>
+
+    <!-- تحميل المكتبات -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/webrtc.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* الشاشات */
+.screen {
+    display: none;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.screen.active {
+    display: block;
+}
+
+/* شاشة الدخول */
+#login-screen {
+    max-width: 400px;
+    padding: 40px;
+    text-align: center;
+}
+
+.login-form h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.login-form h1 i {
+    color: #667eea;
+    margin-left: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    text-align: right;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+.info {
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* شاشة الدردشة */
+#chat-screen {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 20px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px 15px 0 0;
+}
+
+.room-info h2 {
+    margin-bottom: 5px;
+}
+
+.room-info p {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.chat-content {
+    flex: 1;
+    display: flex;
+    height: calc(100% - 80px);
+}
+
+/* قائمة المستخدمين */
+.users-panel {
+    width: 250px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-left: 1px solid #e1e5e9;
+}
+
+.users-panel h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.users-panel h3 i {
+    color: #667eea;
+    margin-left: 8px;
+}
+
+#users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-item {
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.user-status {
+    font-size: 12px;
+    color: #666;
+}
+
+/* منطقة الدردشة */
+.chat-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #fff;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    position: relative;
+    animation: fadeInUp 0.3s ease;
+}
+
+.message.own {
+    align-self: flex-end;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+}
+
+.message.other {
+    align-self: flex-start;
+    background: #f1f3f4;
+    color: #333;
+}
+
+.message-header {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.message-text {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.message-time {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+/* أدوات التحكم الصوتي */
+.voice-controls {
+    padding: 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #e1e5e9;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-voice {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #667eea;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-voice:hover {
+    background: #5a67d8;
+    transform: scale(1.1);
+}
+
+.btn-voice.muted {
+    background: #ff6b6b;
+}
+
+.volume-indicator {
+    flex: 1;
+    max-width: 200px;
+    height: 8px;
+    background: #e1e5e9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#volume-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4ade80, #22c55e, #16a34a);
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* إرسال الرسائل */
+.message-input {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e1e5e9;
+    display: flex;
+    gap: 10px;
+}
+
+#message-text {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 25px;
+    font-size: 14px;
+    text-align: right;
+}
+
+#message-text:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+#send-message {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* مؤشر الحالة */
+.status-indicator {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff6b6b;
+    animation: pulse 2s infinite;
+}
+
+.status-dot.connected {
+    background: #4ade80;
+}
+
+/* الإشعارات */
+.notifications {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.notification {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    animation: slideInRight 0.3s ease;
+    max-width: 300px;
+}
+
+.notification.success {
+    border-right: 4px solid #4ade80;
+}
+
+.notification.info {
+    border-right: 4px solid #667eea;
+}
+
+.notification.warning {
+    border-right: 4px solid #f59e0b;
+}
+
+/* الرسوم المتحركة */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* التصميم المتجاوب */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .chat-content {
+        flex-direction: column;
+    }
+    
+    .users-panel {
+        width: 100%;
+        max-height: 150px;
+        overflow-y: auto;
+    }
+    
+    #users-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .user-item {
+        min-width: 120px;
+    }
+    
+    .message {
+        max-width: 85%;
+    }
+    
+    .voice-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
